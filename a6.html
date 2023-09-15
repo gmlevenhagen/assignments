@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+
+        <title> Assignment 6</title>
+
+        <style>
+
+        body{background-color: lightyellow;
+        color: black;
+        font-size: 24px;}
+
+        h1 {margin-top: 0px;
+        margin-bottom: 0px;}
+
+        input, select {font-size: 24px;}
+    
+
+        </style>
+
+
+        <script>
+            function calculateTotal() {
+                //make variable called total
+                var total = new Number;
+                //determind the starting value of total based on the size selected
+                if (document.getElementById("small").selected) {
+                    total = 10.00;
+                    document.getElementById("size").style.color = "black";
+                }
+                else if (document.getElementById("medium").selected) {
+                    total = 12.50;
+                    document.getElementById("size").style.color = "black";
+                }
+               else if (document.getElementById("large").selected) {
+                    total = 15.00;
+                    document.getElementById("size").style.color = "black";
+                }
+                else {
+                    alert("Please select a size.")
+                    document.getElementById("size").style.color = "red";
+                    //change the <p id="size"> text to red
+                    
+                }
+                
+                //add costs for extra toppings
+                //extra cheese
+                if (document.getElementById("extracheese").checked) {
+                    total = total + 2;
+                }
+
+                if (document.getElementById("sausage").checked) {
+                    total = total + 1;
+                }
+
+                if (document.getElementById("pep").checked) {
+                    total = total + 1;
+                }
+               
+                if (document.getElementById("jalapeno").checked) {
+                    total = total + 0.75;
+                }
+
+                if (document.getElementById("canadianbacon").checked) {
+                    total = total + 2;
+                }
+
+                if (document.getElementById("mushroom").checked) {
+                    total = total + 0.75;
+                }
+                //add 5 other toppings here
+                //each is its own if statement; no else or else if
+
+                //add 11.25% sales tax
+                total = total + (total * 0.1125);
+
+                //add delivery charge
+                if (document.getElementById("pickup").checked) {
+                    "Your order will be ready in 10 minutes" ;
+                    document.getElementById("pickupOrDelivery").style.color = "black";
+                } else if (document.getElementById("delivery").checked) {
+                    total = total + 3;
+                document.getElementById("pickupOrDelivery").style.color = "black";
+                } else {
+                alert("Please select pick up or delivery.");
+                document.getElementById("pickupOrDelivery").style.color = "red";
+                }   
+
+                //write the result to output
+                document.getElementById("output").innerHTML = "Your total cost is $" + total.toFixed(2);
+
+            }//end of calculateTotal() function
+
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <h1> Order a Pizza 
+            &#127829;
+        </h1>
+
+        <p id="size">
+            What Size Do You Want?
+
+            <select name="size">
+                <option value="" id="n-size">
+                    Please select a size
+                </option>
+
+                <option value="small" id="small">
+                    Small - $10.00
+                </option>
+
+                <option value="medium" id="medium">
+                    Medium - $12.50
+                </option>
+
+                <option value="large" id="large">
+                    Large - $15.00
+                </option>
+            </select>
+        </p>
+
+        <p> 
+            What topping do you want?
+
+            <br>
+
+            <input type="checkbox" id="extracheese" value="extracheese">
+            <label for="extracheese"> Extra Cheese (add $2.00)</label>
+            <br>
+            <input type="checkbox" id="sausage" value="sausage">
+            <label for="sausage"> Sausage (add $1.00) </label>
+            <br>
+            <input type="checkbox" id="pep" value="pep">
+            <label for="pep"> Pepperoni (add $1.00) </label>
+            <br>
+            <input type="checkbox" id="jalapeno" value="jalapeno">
+            <label for="jalapeno"> Jalapeno Peppers (add $0.75)</label>
+            <br>
+            <input type="checkbox" id="canadianbacon" value="canadianbacon">
+            <label for="canadianbacon"> Canadian Bacon (add $2.00) </label>
+            <br>
+            <input type="checkbox" id="mushroom" value="mushroom">
+            <label for="mushroom"> Mushrooms (add $0.75) </label>
+
+            <!--add 5 more toppings here-->
+        </p>
+
+            <p id="pickupOrDelivery">
+                <!--add code here-->
+                <!--use two radio buttons-->
+               
+                <label for="pickupOrDelivery">
+                    Pick One:
+                </label> 
+
+                <br>
+
+                <input type="radio" name="pickupOrDelivery" id="pickup" value="pickupOrDelivery">
+                <label for="pickupOrDelivery"> Pick Up </label>
+
+                <br>
+
+                <input type="radio" name="pickupOrDelivery" id="delivery" value="pickupOrDelivery">
+                <label for="pickupOrDelivery"> Delivery (add $3.00) </label>
+            </p>
+
+            <p>
+
+                <small>
+                    Note: 11.25% sales tax will be added to the cost of your pizza
+                </small>
+
+                <br> 
+
+                <input type="button" value="Calculate Price" onclick="calculateTotal();">
+            </p>
+           
+            <p id="output"> </p>
+
+            <br><br>
+
+            <p>
+                <a href="index.html"> Index Page </a>
+            </p>
+            
+    </body>
+
+
+
+
+</html>
